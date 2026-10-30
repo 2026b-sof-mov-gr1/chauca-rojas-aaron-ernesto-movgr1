@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Portrait_Saludo" xml:space="preserve">
+    <value>Hello! I am Aaron
+You are in portrait mode dude 8).
+Made with MAUI.</value>
+  </data>
+  <data name="Portrait_texto_saludo" xml:space="preserve">
+    <value>#0D47A1</value>
+  </data>
+  <data name="Portrait_fondo_pantalla" xml:space="preserve">
+    <value>#20FFFF</value>
+  </data>
+  <data name="Landscape_Saludo" xml:space="preserve">
+    <value>Hello!, I am Aaron 
+You are in landscape mode :).
+Made with MAUI.</value>
+  </data>
+  <data name="Landscape_texto_saludo" xml:space="preserve">
+    <value>#BF360C</value>
+  </data>
+  <data name="Landscape_fondo_pantalla" xml:space="preserve">
+    <value>#FFAA20</value>
+  </data>
+</root>
