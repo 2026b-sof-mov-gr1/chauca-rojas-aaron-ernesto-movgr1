@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ExamenMovB1.Controls"
+             x:Class="ExamenMovB1.Pages.CuentaPage"
+             Title="Mi cuenta">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="18" Padding="0,0,0,24">
+
+            <controls:Encabezado Titulo="Mi cuenta" />
+
+            <!-- Avatar -->
+            <Border BackgroundColor="{StaticResource Crema}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 65"
+                    WidthRequest="130" HeightRequest="130"
+                    HorizontalOptions="Center"
+                    Margin="0,10,0,0">
+                <Image Source="ic_usuario.png" WidthRequest="64" HeightRequest="64" />
+            </Border>
+
+            <Label x:Name="NombreLabel"
+                   FontSize="26" FontAttributes="Bold"
+                   TextColor="{StaticResource AzulMarino}"
+                   HorizontalTextAlignment="Center" />
+
+            <VerticalStackLayout Padding="28,6" Spacing="2">
+                <Label Text="Correo" FontSize="17" TextColor="{StaticResource TextoOscuro}" />
+                <Label x:Name="CorreoLabel" FontSize="17" TextColor="{StaticResource TextoOscuro}" />
+            </VerticalStackLayout>
+
+            <!-- Botón con borde rojo -->
+            <Border BackgroundColor="White"
+                    Stroke="{StaticResource Rojo}" StrokeThickness="1.5"
+                    StrokeShape="RoundRectangle 28"
+                    Padding="20,12"
+                    Margin="28,10,28,0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnEditarTapped" />
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="14" HorizontalOptions="Center">
+                    <Image Source="ic_editar.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                    <Label Text="Editar datos&#10;personales"
+                           TextColor="{StaticResource Rojo}"
+                           FontSize="19" FontAttributes="Bold"
+                           VerticalTextAlignment="Center" />
+                </HorizontalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

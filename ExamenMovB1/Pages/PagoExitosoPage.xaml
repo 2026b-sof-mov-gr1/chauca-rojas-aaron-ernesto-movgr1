@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ExamenMovB1.Controls"
+             x:Class="ExamenMovB1.Pages.PagoExitosoPage"
+             Title="Pago exitoso">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <controls:OndaInferior Grid.Row="0" Grid.RowSpan="2" />
+
+        <controls:Encabezado Grid.Row="0" Titulo="Short Line EPN" VolverAlInicio="True" />
+
+        <VerticalStackLayout Grid.Row="1"
+                             Spacing="22"
+                             Padding="28,16,28,0"
+                             MaximumWidthRequest="480">
+
+            <Image Source="ic_exito.png" WidthRequest="90" HeightRequest="90" />
+
+            <Label Text="¡Gracias por tu compra!"
+                   FontSize="27" FontAttributes="Bold"
+                   TextColor="{StaticResource AzulMarino}"
+                   HorizontalTextAlignment="Center" />
+
+            <Image Source="ic_recibo.png" WidthRequest="100" HeightRequest="90" />
+
+            <Label Text="Encuentra tu código en la sección de &quot;Ver pedidos&quot; o en la bandeja del correo registrado."
+                   FontSize="17"
+                   TextColor="{StaticResource TextoOscuro}"
+                   HorizontalTextAlignment="Center" />
+
+            <Button Text="Volver al inicio"
+                    Style="{StaticResource BotonPrincipal}"
+                    Margin="0,12,0,0"
+                    Clicked="OnVolverInicioClicked" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

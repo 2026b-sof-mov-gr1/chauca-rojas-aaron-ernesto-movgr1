@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ExamenMovB1.Controls"
+             x:Class="ExamenMovB1.Pages.PlatoFormPage"
+             Title="Plato">
+
+    <ContentPage.Resources>
+        <Style x:Key="Etiqueta" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource AzulMarino}" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+        <Style x:Key="Campo" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{StaticResource FondoTarjeta}" />
+            <Setter Property="Stroke" Value="{StaticResource BordeTarjeta}" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 12" />
+            <Setter Property="Padding" Value="12,2" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="8" Padding="0,0,0,24">
+
+            <controls:Encabezado x:Name="EncabezadoView" Titulo="Nuevo plato" />
+
+            <VerticalStackLayout Spacing="8" Padding="20,4,20,0">
+
+                <Label Text="Nombre" Style="{StaticResource Etiqueta}" />
+                <Border Style="{StaticResource Campo}">
+                    <Entry x:Name="NombreEntry"
+                           Placeholder="Ej. Seco de pollo"
+                           FontSize="16"
+                           MaxLength="40" />
+                </Border>
+
+                <Label Text="Precio ($)" Style="{StaticResource Etiqueta}" Margin="0,8,0,0" />
+                <Border Style="{StaticResource Campo}">
+                    <Entry x:Name="PrecioEntry"
+                           Placeholder="Ej. 3.50"
+                           Keyboard="Numeric"
+                           FontSize="16" />
+                </Border>
+
+                <Label Text="Categoría" Style="{StaticResource Etiqueta}" Margin="0,8,0,0" />
+                <Border Style="{StaticResource Campo}">
+                    <Picker x:Name="CategoriaPicker"
+                            Title="Elige una categoría"
+                            FontSize="16"
+                            TextColor="{StaticResource TextoOscuro}" />
+                </Border>
+
+                <Label Text="Componentes (uno por línea)" Style="{StaticResource Etiqueta}" Margin="0,8,0,0" />
+                <Border Style="{StaticResource Campo}">
+                    <Editor x:Name="ComponentesEditor"
+                            Placeholder="Sopa&#10;Arroz&#10;Pollo"
+                            FontSize="16"
+                            HeightRequest="130" />
+                </Border>
+
+                <Button x:Name="GuardarButton"
+                        Text="Guardar"
+                        Style="{StaticResource BotonPrincipal}"
+                        Margin="0,22,0,0"
+                        Clicked="OnGuardarClicked" />
+
+                <Button Text="Cancelar"
+                        BackgroundColor="White"
+                        TextColor="{StaticResource Rojo}"
+                        BorderColor="{StaticResource Rojo}" BorderWidth="1.5"
+                        FontAttributes="Bold" FontSize="18"
+                        CornerRadius="26" HeightRequest="52"
+                        Margin="0,6,0,0"
+                        Clicked="OnCancelarClicked" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
