@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ExamenMovB1.Controls"
+             xmlns:models="clr-namespace:ExamenMovB1.Models"
+             x:Class="ExamenMovB1.Pages.CarritoPage"
+             Title="Mi carrito">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="18" Padding="0,0,0,24">
+
+            <controls:Encabezado Titulo="Mi carrito" />
+
+            <!-- Tabla del carrito -->
+            <Border Style="{StaticResource Tarjeta}" Margin="16,0" BackgroundColor="White">
+                <VerticalStackLayout>
+                    <Grid ColumnDefinitions="*,1.8*,*"
+                          BackgroundColor="{StaticResource FondoEncabezadoTabla}"
+                          Padding="4,12">
+                        <Label Grid.Column="0" Text="Cantidad" Style="{StaticResource EncabezadoTabla}" />
+                        <Label Grid.Column="1" Text="Tipo" Style="{StaticResource EncabezadoTabla}" />
+                        <Label Grid.Column="2" Text="Precio" Style="{StaticResource EncabezadoTabla}" />
+                    </Grid>
+
+                    <VerticalStackLayout x:Name="FilasLayout">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:LineaPedido">
+                                <VerticalStackLayout>
+                                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource BordeTarjeta}" />
+                                    <Grid ColumnDefinitions="*,1.8*,*" Padding="4,14">
+                                        <Label Grid.Column="0" Text="{Binding Cantidad}" Style="{StaticResource CeldaTabla}" />
+                                        <Label Grid.Column="1" Text="{Binding Tipo}" Style="{StaticResource CeldaTabla}" />
+                                        <Label Grid.Column="2" Text="{Binding PrecioTexto}" Style="{StaticResource CeldaTabla}" />
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Hora estimada de retiro (lista de selección) -->
+            <Border BackgroundColor="{StaticResource Crema}"
+                    Stroke="#F3DDB0" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="14,4"
+                    Margin="16,0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHoraTapped" />
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Image Source="ic_reloj.png" WidthRequest="26" HeightRequest="26" VerticalOptions="Center" />
+                    <Label Text="Hora estimada de retiro:"
+                           TextColor="{StaticResource AzulMarino}"
+                           FontAttributes="Bold" FontSize="16"
+                           VerticalTextAlignment="Center" />
+                    <Picker x:Name="HoraPicker"
+                            Title="Elige la hora de retiro"
+                            TextColor="{StaticResource Rojo}"
+                            FontAttributes="Bold" FontSize="20"
+                            BackgroundColor="Transparent"
+                            WidthRequest="64"
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="Center" />
+                    <Label Text="▾"
+                           TextColor="{StaticResource Rojo}"
+                           FontSize="20"
+                           VerticalTextAlignment="Center" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- Total -->
+            <Border Style="{StaticResource Tarjeta}" Padding="22,18" Margin="16,0">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Total"
+                           FontSize="24" FontAttributes="Bold"
+                           TextColor="{StaticResource AzulMarino}"
+                           VerticalTextAlignment="Center" />
+                    <Label x:Name="TotalLabel" Grid.Column="1"
+                           Style="{StaticResource Precio}" FontSize="32"
+                           VerticalTextAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <Button Text="Ir a pagar"
+                    Style="{StaticResource BotonPrincipal}"
+                    Margin="16,6,16,0"
+                    Clicked="OnPagarClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

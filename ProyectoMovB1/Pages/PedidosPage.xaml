@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ProyectoMovB1.Controls"
+             xmlns:models="clr-namespace:ProyectoMovB1.Models"
+             x:Class="ProyectoMovB1.Pages.PedidosPage"
+             Title="Mis pedidos">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="0,0,0,24">
+
+            <controls:Encabezado Titulo="Mis pedidos" />
+
+            <!-- Aviso -->
+            <Border BackgroundColor="{StaticResource RosaAviso}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="12,10"
+                    Margin="16,0">
+                <Label Text="Pedidos pendientes por escanear"
+                       TextColor="{StaticResource Rojo}"
+                       FontSize="16" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+            </Border>
+
+            <!-- Tabla de pedidos -->
+            <Border Style="{StaticResource Tarjeta}" Margin="16,0" BackgroundColor="White">
+                <VerticalStackLayout>
+                    <Grid ColumnDefinitions="0.9*,1.6*,*,0.8*"
+                          BackgroundColor="{StaticResource FondoEncabezadoTabla}"
+                          Padding="4,12">
+                        <Label Grid.Column="0" Text="Cantidad" Style="{StaticResource EncabezadoTabla}" />
+                        <Label Grid.Column="1" Text="Tipo" Style="{StaticResource EncabezadoTabla}" />
+                        <Label Grid.Column="2" Text="Precio" Style="{StaticResource EncabezadoTabla}" />
+                        <Label Grid.Column="3" Text="QR" Style="{StaticResource EncabezadoTabla}" />
+                    </Grid>
+
+                    <VerticalStackLayout x:Name="FilasLayout">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:LineaPedido">
+                                <VerticalStackLayout>
+                                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource BordeTarjeta}" />
+                                    <Grid ColumnDefinitions="0.9*,1.6*,*,0.8*" Padding="4,10">
+                                        <Label Grid.Column="0" Text="{Binding Cantidad}" Style="{StaticResource CeldaTabla}" />
+                                        <Label Grid.Column="1" Text="{Binding Tipo}" Style="{StaticResource CeldaTabla}" />
+                                        <Label Grid.Column="2" Text="{Binding PrecioTexto}" Style="{StaticResource CeldaTabla}" />
+                                        <Image Grid.Column="3" Source="qr_codigo.png"
+                                               WidthRequest="44" HeightRequest="44"
+                                               SemanticProperties.Description="Código QR del pedido" />
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

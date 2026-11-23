@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Paleta y estilos propios de Short Line EPN -->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Colores de marca -->
+    <Color x:Key="AzulMarino">#1B2A5C</Color>
+    <Color x:Key="Rojo">#D7262E</Color>
+    <Color x:Key="RojoOscuro">#B81C24</Color>
+    <Color x:Key="FondoPagina">#FFFFFF</Color>
+    <Color x:Key="FondoTarjeta">#F5F7FB</Color>
+    <Color x:Key="BordeTarjeta">#E4E8F0</Color>
+    <Color x:Key="FondoEncabezadoTabla">#E9EEF7</Color>
+    <Color x:Key="FondoChip">#EEF1F6</Color>
+    <Color x:Key="Crema">#FDF0D5</Color>
+    <Color x:Key="RosaAviso">#FDE3E4</Color>
+    <Color x:Key="TextoOscuro">#1E1E24</Color>
+    <Color x:Key="TextoSuave">#4A4F5C</Color>
+
+    <!-- Sombra suave para tarjetas -->
+    <Shadow x:Key="SombraTarjeta" Brush="#1B2A5C" Opacity="0.12" Radius="10" Offset="0,3" />
+
+    <!-- Fondo de todas las páginas -->
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{StaticResource FondoPagina}" />
+        <Setter Property="Shell.NavBarIsVisible" Value="False" />
+    </Style>
+
+    <!-- Tarjeta redondeada gris claro -->
+    <Style x:Key="Tarjeta" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource FondoTarjeta}" />
+        <Setter Property="Stroke" Value="{StaticResource BordeTarjeta}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <!-- Tarjeta blanca con sombra (botones grandes del inicio) -->
+    <Style x:Key="TarjetaBlanca" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Stroke" Value="{StaticResource BordeTarjeta}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 18" />
+        <Setter Property="Shadow" Value="{StaticResource SombraTarjeta}" />
+    </Style>
+
+    <!-- Textos -->
+    <Style x:Key="TituloPagina" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource AzulMarino}" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="EncabezadoTabla" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource AzulMarino}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="CeldaTabla" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextoOscuro}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="Precio" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Rojo}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <!-- Botón rojo principal -->
+    <Style x:Key="BotonPrincipal" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Rojo}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="26" />
+        <Setter Property="HeightRequest" Value="56" />
+        <Setter Property="Shadow" Value="{StaticResource SombraTarjeta}" />
+    </Style>
+</ResourceDictionary>

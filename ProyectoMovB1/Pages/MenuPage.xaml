@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ProyectoMovB1.Controls"
+             xmlns:models="clr-namespace:ProyectoMovB1.Models"
+             x:Class="ProyectoMovB1.Pages.MenuPage"
+             Title="Menú">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <controls:Encabezado Grid.Row="0" Titulo="Short Line EPN" MostrarCarrito="True" />
+
+        <!-- Pestañas de categoría (se llenan desde el código) -->
+        <ScrollView Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout x:Name="CategoriasLayout" Spacing="10" Padding="16,6,16,12" />
+        </ScrollView>
+
+        <!-- Lista de platos -->
+        <CollectionView x:Name="ProductosView" Grid.Row="2" Margin="16,0">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="16" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.Footer>
+                <ContentView HeightRequest="16" />
+            </CollectionView.Footer>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Producto">
+                    <Border Style="{StaticResource Tarjeta}" Padding="14,14,12,12">
+                        <Grid ColumnDefinitions="110,*,Auto" RowDefinitions="Auto,*" ColumnSpacing="10">
+
+                            <Label Grid.Column="1" Grid.ColumnSpan="2"
+                                   Text="{Binding Nombre}"
+                                   FontSize="18" FontAttributes="Bold"
+                                   TextColor="{StaticResource AzulMarino}"
+                                   HorizontalTextAlignment="Center"
+                                   Margin="0,0,0,8" />
+
+                            <Image Grid.Row="0" Grid.RowSpan="2"
+                                   Source="{Binding Imagen}"
+                                   Aspect="AspectFit"
+                                   VerticalOptions="Center" />
+
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="1"
+                                                 BindableLayout.ItemsSource="{Binding Componentes}"
+                                                 VerticalOptions="Center">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <Label Text="{Binding StringFormat='•  {0}'}"
+                                               FontSize="15"
+                                               TextColor="{StaticResource TextoOscuro}" />
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="2"
+                                                 Spacing="10"
+                                                 VerticalOptions="Center">
+                                <Label Text="{Binding PrecioTexto}"
+                                       Style="{StaticResource Precio}"
+                                       HorizontalTextAlignment="End" />
+
+                                <!-- Botón "+" rojo -->
+                                <Border BackgroundColor="{StaticResource Rojo}"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 20"
+                                        WidthRequest="40" HeightRequest="40"
+                                        HorizontalOptions="End"
+>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnAgregarTapped" />
+                                    </Border.GestureRecognizers>
+                                    <Label Text="+"
+                                           TextColor="White" FontSize="28" FontAttributes="Bold"
+                                           HorizontalOptions="Center" VerticalOptions="Center"
+                                           Margin="0,-4,0,0" />
+                                </Border>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
